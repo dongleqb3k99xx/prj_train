@@ -65,7 +65,7 @@ class UserController extends Controller{
 	}
  
 	/**
-	 * Delete a task
+	 * Delete a user
 	 *
 	 * @var integer $id
 	 *
@@ -73,8 +73,14 @@ class UserController extends Controller{
 	 */
 	public function postDeleteUser($id)
 	{
-		$this->task->delete($id);
+		$this->user->delete($id);
  
 		return redirect()->route('user.index');
 	}
+
+    public function generateUser(){
+        for($i = 0; $i <= 100 ; $i++){
+            
+        }
+    }
 }
