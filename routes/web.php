@@ -47,7 +47,7 @@ Route::group(['prefix' => 'tasks'], function () {
 });
 
 //user
-Route::group(['prefix'=>'task'], function(){
+Route::group(['prefix'=>'users'], function(){
 	Route::get('/{id?}',[
 		'uses' => 'UserController@getAllUsers',
 		'as' => 'users.index'
