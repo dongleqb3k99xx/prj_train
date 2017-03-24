@@ -19,6 +19,10 @@ class UserService implements UserRepository{
     public function getById($id){
         return $this->model->find($id);
     }
+    
+    public function getByName($name){
+        return new UserService($this->model->where(['name' => $name])->first());
+    }
 
     public function create(array $attribute){
         return $this->model->create($attribute);
