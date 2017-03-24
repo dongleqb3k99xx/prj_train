@@ -48,3 +48,5 @@ Route::group(['prefix' => 'tasks'], function () {
 });
 
 
+Route::get('test', [
+    'uses' => 'TestController@getIndex'

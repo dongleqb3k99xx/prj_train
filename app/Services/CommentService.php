@@ -9,7 +9,7 @@ class CommentService implements CommentRepository{
     private $model;
 
     public function __construct(Comment $model){
-        $this->$model = $model;
+        $this->model = $model;
     }
 
     public function getAll(){
@@ -30,5 +30,13 @@ class CommentService implements CommentRepository{
 
     public function delete($id){
         return $this->model->find($id)->delete();
+    }
+    
+    public function getUser() {
+        return new UserService($this->model->user);
+    }
+    
+    public function getBody() {
+        return $this->model->body;
     }
 }

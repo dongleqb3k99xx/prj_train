@@ -31,4 +31,19 @@ class UserService implements UserRepository{
     public function delete($id){
         return $this->model->find($id)->delete();
     }
+    
+    public function getName() {
+        return $this->model->name;
+    }
+    
+    public function exists() {
+        return $this->model && $this->model->exists;
+    }
+    
+    public function getPosts() {
+        $posts = $this->model->posts;
+        return $posts->count() ? $posts->map(function($post) {
+            return new PostService($post);
+        }) : [];
+    }
 }
