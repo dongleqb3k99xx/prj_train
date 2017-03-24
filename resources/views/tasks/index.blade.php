@@ -6,6 +6,11 @@
 </head>
 <body>
 <div class="container">
+
+    {{-- Create Form --}}
+    <div class="col-md-12">
+    
+    </div>
     {{-- List task --}}
     <div class="row">
         <div class="col-md-6">
@@ -58,5 +63,7 @@
 					{{ Form::close() }}
 			</div>
 		</div>
+
+
 </div>
 </body>
