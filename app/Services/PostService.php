@@ -18,7 +18,7 @@ class PostService implements PostRepository {
     }
 
     public function getName() {
-        return $this->model->name;
+        return $this->model->title;
     }
 
     public function getById($id) {

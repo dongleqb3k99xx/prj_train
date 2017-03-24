@@ -22,7 +22,7 @@ use App\Services\UserService;
  */
 class TestController extends Controller {
 
-    public function getIndex() {
+    public function getTestRelationships() {
         define('CREATE_TEST_DATA', false);
         \Illuminate\Support\Facades\DB::transaction(function () {
             if (CREATE_TEST_DATA === true) {
@@ -69,8 +69,7 @@ class TestController extends Controller {
         echo sprintf('Posts of user %s :<br>', $user->getName());
         foreach ($user_posts as $user_post) {
             $post_comments = $user_post->getComments();
-            
-            var_dump($user_post->getName());
+           
             echo sprintf('- Post \'%s\' has %i comments :<br>', $user_post->getName(), count($post_comments));
             
             foreach ($post_comments as $post_comment) {
