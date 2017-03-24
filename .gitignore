@@ -1,4 +1,6 @@
-/nbproject/private/
+
+/vendor
+/.idea
+
+
 .env
-vendor
-vendor*
