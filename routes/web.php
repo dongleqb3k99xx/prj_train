@@ -17,11 +17,11 @@ Route::get('/', function () {
 });
 
 //Route::get("/users", 'UserController@index');
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
+// Route::controllers([
+//     'auth' => 'Auth\AuthController',
+//     'password' => 'Auth\PasswordController',
 
-]);
+// ]);
 
 //task
 Route::group(['prefix' => 'tasks'], function () {
