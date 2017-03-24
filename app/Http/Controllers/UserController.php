@@ -7,7 +7,7 @@ use App\Repositories\UserRepository;
 class UserController extends Controller{
 
     private $model;
-    public function __construct(userRepository $user) 
+    public function __construct(UserRepository $user) 
 	{
 		$this->user = $user;
 	}
@@ -20,6 +20,7 @@ class UserController extends Controller{
 	public function getAllUsers($id = null)
 	{
 		$users = $this->user->getAll();
+        
 		$editUser = (isset($id)) ? $this->user->getById($id) : null;
  
 		return view('users.index', compact('users', 'editUser'));
@@ -78,9 +79,18 @@ class UserController extends Controller{
 		return redirect()->route('user.index');
 	}
 
-    public function generateUser(){
-        for($i = 0; $i <= 100 ; $i++){
-            
+    public function getGenerateUser(){
+
+        for($i = 0; $i <= 10 ; $i++){
+            $name = substr(md5(rand()), 0, 10);
+            $attributes['name'] = $name;
+            $attributes['email'] = $name.'@gmail.com';
+            $attributes['password'] = bcrypt('123abc?');
+            $attributes['role'] = 'author';
+
+            var_dump($this->user->create($attributes));
         }
+
+        echo 'something';
     }
 }

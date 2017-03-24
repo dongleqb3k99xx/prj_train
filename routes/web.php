@@ -1,5 +1,6 @@
 <?php
 
+require __DIR__.'/web_hoang_partial.php';
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,25 +47,4 @@ Route::group(['prefix' => 'tasks'], function () {
 	]);
 });
 
-//user
-Route::group(['prefix'=>'users'], function(){
-	Route::get('/{id?}',[
-		'uses' => 'UserController@getAllUsers',
-		'as' => 'users.index'
-	]);
 
-	Route::post('store', [
-		'uses' => 'UserController@postStoreUser',
-		'as' => 'user.store'
-	]);
-
-	Route::patch('{id}/update', [
-		'uses' => 'UserController@postUpdateUser',
-		'as' => 'user.update'
-	]);
-
-	Route::delete('{id}/delete', [
-		'uses' => 'UserController@postDeleteUser',
-		'as' => 'user.delete'
-	]);
-});

@@ -6,7 +6,15 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
 use App\Repositories\TaskRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\PostRepository;
+use App\Repositories\CommentRepository;
+
 use App\Services\TaskService;
+use App\Services\UserService;
+use App\Services\PostService;
+use App\Services\CommentService;
+
 
 class AppServiceProvider extends ServiceProvider
 {
