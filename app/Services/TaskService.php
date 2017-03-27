@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Task;
 use App\Repositories\TaskRepository;
+use App\ModelViews\TaskViewModel;
 
 class TaskService implements TaskRepository{
 
@@ -14,7 +15,8 @@ class TaskService implements TaskRepository{
     }
 
     public function getAll(){
-        return $this->model->all();
+        $tasks = $this->model->all();
+        return TaskService::mappingListModelView($tasks);
     }
 
     public function getById($id){
@@ -31,5 +33,33 @@ class TaskService implements TaskRepository{
 
     public function delete($id){
         return $this->model->find($id)->delete();
+    }
+
+    /*
+    * function mappingListModelView
+    * return Task View Model
+    */
+    private static function mappingModelView(Task $task = null){
+        $taskViewModel = new TaskViewModel();
+        $taskViewModel->taskId = $task->id;
+        $taskViewModel->description = $task->description;
+
+        return $taskViewModel;
+    }
+
+    /*
+    * function mappingListModelView
+    * return list Task View Model
+    */
+    public static function mappingListModelView($tasks = null){
+        $taskViewModelList = array();
+        foreach($tasks as $task){
+            $taskVM = new TaskViewModel();
+            $taskVM->id = $task->id;
+            $taskVM->description = $task->description;
+            array_push($taskViewModelList, $taskVM);
+        }
+
+        return $taskViewModelList;
     }
 }
